@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head.ejs') %>
+<style>
+img { width: 50px; height: auto; display: block; }
+</style>
+</head>
+<body>
+  <%- include('../partials/header.ejs') %>
+    <main class="container">
+      <div class="col-md-12 mx-auto">
+        <h3 class="mb-5">Listado de productos</h3>
+        <%if (productos.length) { %>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Price</th>
+              <th scope="col">Image</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(const prod of productos) { %>
+            <tr>
+              <th scope="row"><%=prod.id%></th>
+              <td><%=prod.title%></td>
+              <td><%=prod.price%></td>
+              <td>
+                <img src="https://cdn1.iconfinder.com/data/icons/fruit-39/128/FRUIT_2-<%=prod.thumbnail%>-128.png" />
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <% } else { %>
+        <div class="alert alert-danger">
+          <strong>No hay productos!</strong>
+        </div>
+        <% } %>
+      </div>
+    </main>
+</body>
+</html>

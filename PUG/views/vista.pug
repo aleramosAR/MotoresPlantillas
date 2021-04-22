@@ -1,0 +1,30 @@
+doctype
+html( lang="en" )
+  head
+    include ../partials/head.pug
+    style(type="text/css").
+      img { width:50px; height: auto; display: block; }
+  body
+    include ../partials/header.pug
+  main(class="container")
+    div(class="col-md-12 mx-auto")
+      h3(class="mb-5")="Listado de productos"
+      if (productos.length)
+        table(class="table")
+          thead(class="thead-dark")
+            tr
+              th(scope="col")="ID"
+              th(scope="col")="Title"
+              th(scope="col")="Price"
+              th(scope="col")="Image"
+          tbody
+            each prod in productos
+              tr
+                th(scope="row")=prod.id
+                td=prod.title
+                td=prod.price
+                td
+                  img(src=`https://cdn1.iconfinder.com/data/icons/fruit-39/128/FRUIT_2-${prod.thumbnail}-128.png`)
+      else 
+        div(class="alert alert-danger")
+          strong="No hay productos!"
